@@ -1,0 +1,95 @@
+###Get the service document
+http://localhost:4004/odata/v4/catalogService
+
+###Get the medata
+http://localhost:4004/odata/v4/catalogService/$metadata
+
+###Get all Employees
+http://localhost:4004/odata/v4/catalogService/EmployeeSet
+
+### Create new Employee
+POST http://localhost:4004/odata/v4/catalogService/EmployeeSet
+Content-Type: application/json
+
+{
+    "nameFirst": "Lionel",
+    "nameMiddle": null,
+    "nameLast": "Messi",
+    "nameInitials": null,
+    "sex": "M",
+    "language": "E",
+    "phoneNumber": "+911234567890",
+    "email": "lionel.messi@gmail.com",
+    "loginName": "LIONELMESSSI",
+    "Currency_code": "EUR",
+    "salaryAmount": 20000,
+    "accountNumber": "111222333",
+    "bankId": "10000655",
+    "bankName": "My Bank of Spain"
+}
+
+###Get newly created Employee
+http://localhost:4004/odata/v4/catalogService/EmployeeSet/91b84f94-f7aa-4786-92a6-61728ca4292a
+
+### Update Employee
+PATCH http://localhost:4004/odata/v4/catalogService/EmployeeSet/91b84f94-f7aa-4786-92a6-61728ca4292a
+Content-Type: application/json 
+
+{
+    "salaryAmount": 50000,
+    "Currency_code": "USD"
+}
+
+### Delete Employee
+DELETE http://localhost:4004/odata/v4/catalogService/EmployeeSet/84527d0b-e12a-4ed9-bc03-2c793a1c1a6d
+
+###Get single employee
+http://localhost:4004/odata/v4/catalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197C7FB
+
+###Get total count of EmployeeSet
+http://localhost:4004/odata/v4/catalogService/EmployeeSet/$count
+
+###Get data chunk by chunk -> Pagination ($top, $skip)
+http://localhost:4004/odata/v4/catalogService/EmployeeSet?$top=3&$skip=3
+
+###Get data based on filter condition
+http://localhost:4004/odata/v4/catalogService/EmployeeSet?$filter=bankName eq 'My Bank of New York'
+
+###Pattern based data
+http://localhost:4004/odata/v4/catalogService/EmployeeSet?$filter=contains(nameFirst,'Su')
+
+###Get perticular fields -> $select
+http://localhost:4004/odata/v4/catalogService/EmployeeSet?$select=nameFirst,nameLast,loginName
+
+###Get data for Products
+http://localhost:4004/odata/v4/catalogService/Products
+
+###Get data of order where this Product is used
+http://localhost:4004/odata/v4/catalogService/Products('74867AD200E41EDBA5D8B06B26EB8052')/To_Items
+
+###Get Product and Item in single call
+http://localhost:4004/odata/v4/catalogService/Products/74867AD200E41EDBA5D8B06B26EB8052?$expand=To_Items
+
+###Get POs
+http://localhost:4004/odata/v4/catalogService/POSet
+
+###Get single PO
+http://localhost:4004/odata/v4/catalogService/POSet/74867AD200E41EDBA5D8B0C98DC2C052
+
+###Boost PO Gross Amount - Action
+POST http://localhost:4004/odata/v4/catalogService/POSet/74867AD200E41EDBA5D8B0C98DC2C052/catalogService.boost
+Content-Type: application/json
+
+{}
+
+###Get PO largest Order - Function
+http://localhost:4004/odata/v4/catalogService/getLargestOrder()
+
+###Get all Status
+http://localhost:4004/odata/v4/catalogService/StatusSet
+
+###Get all Employees - V2
+http://localhost:4004/v2/odata/v4/catalogService/EmployeeSet
+
+###Get single employee - V2
+http://localhost:4004/v2/odata/v4/catalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197C7FB

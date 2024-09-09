@@ -1,0 +1,5 @@
+STATUS_ID,STATUS_DESCRIPTION
+N,New
+P,Pending
+A,Approved
+R,Rejected

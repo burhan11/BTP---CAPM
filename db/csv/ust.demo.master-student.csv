@@ -1,0 +1,4 @@
+id,nameFirst,nameLast,age,class_id,houseno,street,sector,landmark,country,city
+1001,Mohammed,Abdullah,40,1,112,MG Road, Sector 40,Vishal Mega Mart,IN,Mumbai
+1002,Abdul,Aziz,38,2,52,Fruit Colony, Sector 34,Electronic City,IN,Banglore
+1003,Mohammed,Faisal,45,3,110,Chandi Chowk Road, Sector 12,High Court,IN,Chennai
