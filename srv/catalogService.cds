@@ -4,12 +4,27 @@ using {
 } from '../db/datamodel';
 // using {capmapp.db.CDSViews} from '../db/CDSViews';
 
-service catalogService @(path: 'catalogService') {
+service catalogService @(
+    path   : 'catalogService', //Service name
+    require: 'authenticated-user' //Authentication i.e., IDP (Identity Provider) ask for login credentails
+) {
 
     entity BusinessPartnerSet                 as projection on master.businesspartner;
     entity AddressSet                         as projection on master.address;
+
     // @readonly
-    entity EmployeeSet                        as projection on master.employees;
+    entity EmployeeSet @(restrict: [ //Authorization
+        {
+            grant: 'READ',
+            to   : 'Viewer', //Scope
+            where: 'bankName = $user.BankName' //Row level Security - Attribute
+        },
+        {
+            grant: ['WRITE'],
+            to   : 'Admin'
+        }
+    ])                                        as projection on master.employees;
+
     entity ProductSet                         as projection on master.product;
 
     @Capabilities: {Deletable: false}
