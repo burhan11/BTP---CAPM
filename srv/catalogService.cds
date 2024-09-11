@@ -5,8 +5,8 @@ using {
 // using {capmapp.db.CDSViews} from '../db/CDSViews';
 
 service catalogService @(
-    path   : 'catalogService', //Service name
-    require: 'authenticated-user' //Authentication i.e., IDP (Identity Provider) ask for login credentails
+    path    : 'catalogService', //Service name
+    requires: 'authenticated-user' //Authentication i.e., IDP (Identity Provider) ask for login credentails
 ) {
 
     entity BusinessPartnerSet                 as projection on master.businesspartner;
@@ -15,9 +15,9 @@ service catalogService @(
     // @readonly
     entity EmployeeSet @(restrict: [ //Authorization
         {
-            grant: 'READ',
-            to   : 'Viewer', //Scope
-            where: 'bankName = $user.BankName' //Row level Security - Attribute
+            grant: ['READ'],
+            to   : 'Viewer',
+            where: 'bankName = $user.BankName'
         },
         {
             grant: ['WRITE'],
