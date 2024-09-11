@@ -26,7 +26,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: cap-db
-      - name: cap-auth
+      - name: capmapp-auth
 
   - name: cap-db-deployer
     type: hdb
@@ -42,7 +42,7 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: cap-auth
+  - name: capmapp-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
