@@ -15,7 +15,8 @@
     {
       "name": "BankName",
       "description": "Bank Name property",
-      "valueType": "string"
+      "valueType": "string",
+      "valueRequired": false
     }
   ],
   "role-templates": [
