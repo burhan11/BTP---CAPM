@@ -25,24 +25,24 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: capmapp-db
-      - name: capmapp-auth
+      - name: cap-db
+      - name: cap-auth
 
-  - name: capmapp-db-deployer
+  - name: cap-db-deployer
     type: hdb
     path: gen/db
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: capmapp-db
+      - name: cap-db
 
 resources:
-  - name: capmapp-db
+  - name: cap-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: capmapp-auth
+  - name: cap-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
