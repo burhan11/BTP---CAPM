@@ -6,6 +6,7 @@ http://localhost:4004/odata/v4/catalogService/$metadata
 
 ###Get all Employees
 http://localhost:4004/odata/v4/catalogService/EmployeeSet
+Authorization: burhanuddin:
 
 ### Create new Employee
 POST http://localhost:4004/odata/v4/catalogService/EmployeeSet

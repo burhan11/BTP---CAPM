@@ -31,7 +31,24 @@
   "cds": {
     "requires": {
       "db": "hana",
-      "auth": "xsuaa"
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "burhanuddin": {
+            "roles": [
+              "Viewer"
+            ],
+            "attr": {
+              "BankName": ["My Bank of San Francisco", "My Bank of Antioch"]
+            }
+          },
+          "Admin": {
+            "roles": [
+              "Admin"
+            ]
+          }
+        }
+      }
     }
   }
 }
