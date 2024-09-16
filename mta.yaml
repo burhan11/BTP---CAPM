@@ -11,6 +11,22 @@ build-parameters:
         - npm ci
         - npx cds build --production
 modules:
+  - name: capmapp-ui
+    type: nodejs
+    path: app
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    requires:
+      - name: capmapp-auth
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          strictSSL: true
+          forwardAuthToken: true
+          url: '~{srv-url}'
   - name: capmapp-srv
     type: nodejs
     path: gen/srv
