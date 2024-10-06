@@ -27,7 +27,7 @@ service catalogService @(
 
     entity ProductSet                         as projection on master.product;
 
-    @Capabilities: {Deletable: false}
+    // @Capabilities: {Deletable: false}
     entity POSet @(odata.draft.enabled: true) as
         projection on transaction.purchaseorder {
             *,
